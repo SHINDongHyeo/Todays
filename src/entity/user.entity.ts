@@ -2,22 +2,24 @@ import { Column, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm";
 
 @Entity()
 export class User {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({ type: 'int' })
     seq: number;
 
-    @Column()
+    @Column({ type: 'varchar', length: 40 })
     email: string;
 
-    @Column()
+    @Column({ type: 'varchar', length: 40 })
     password: string;
 
-    @Column()
+    @Column({ type: 'varchar', length: 30 })
     nickname: string;
 
-    @Column()
-    level: string;
+    @Column({ type: 'varchar', length: 10 })
+    rank: string;
 
-    @Timestamp()
-    sdfs: Date;
+    @Column({ type: 'int' })
+    rankPoint: number;
 
+    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    createdAt: Date;
 }
